@@ -1,6 +1,10 @@
 import psycopg2
+import urllib.parse
 from flask import Flask
 app = Flask(__name__)
+
+unencoded = "postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@40dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db"
+encoded = urllib.parse.quote_plus(unencoded)
 
 @app.route('/')
 def hello_world():
@@ -8,7 +12,9 @@ def hello_world():
 
 @app.route('/db_test')
 def testing():
-    conn = psycopg2.connect("postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh%40dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db")
+    unencoded = "postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@40dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db"
+    encoded = urllib.parse.quote_plus(unencoded)
+    conn = psycopg2.connect(encoded)
     
     conn.close()
     
