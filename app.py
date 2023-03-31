@@ -1,6 +1,4 @@
 import psycopg2
-import urllib.parse
-from tabulate import tabulate
 
 from flask import Flask
 app = Flask(__name__)
