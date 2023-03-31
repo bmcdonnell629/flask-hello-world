@@ -1,10 +1,10 @@
 import psycopg2
 import urllib.parse
+from tabulate import tabulate
+
 from flask import Flask
 app = Flask(__name__)
 
-unencoded = "postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db"
-encoded = urllib.parse.quote_plus(unencoded)
 
 @app.route('/')
 def hello_world():
@@ -12,9 +12,7 @@ def hello_world():
 
 @app.route('/db_test')
 def testing():
-    unencoded = "postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db"
-    encoded = urllib.parse.quote_plus(unencoded)
-    conn = psycopg2.connect(encoded)
+    conn = psycopg2.connect("postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db")
     
     conn.close()
     
@@ -75,7 +73,9 @@ def select():
     
     conn.close()
     
-    return records
+
+    return tabulate(records, tablefmt='html')
+    
 
 @app.route('/db_drop')
 def drop():
