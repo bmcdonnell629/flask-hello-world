@@ -72,9 +72,8 @@ def select():
     records = cur.fetchall()
     
     conn.close()
-    
-
-    return tabulate(records, tablefmt='html')
+    htmlRecord = tabulate(records, tablefmt='html')
+    return htmlRecord
     
 
 @app.route('/db_drop')
