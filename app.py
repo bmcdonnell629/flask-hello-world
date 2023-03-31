@@ -8,7 +8,7 @@ def hello_world():
 
 @app.route('/db_test')
 def testing():
-    conn = psycopg2.connect("postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db")
+    conn = psycopg2.connect("postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh%40dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db")
     
     conn.close()
     
@@ -71,7 +71,7 @@ def select():
     
     return records
 
-@app.route('/drop_db')
+@app.route('/db_drop')
 def drop():
     conn = psycopg2.connect("postgres://lab_10_db_user:6wuRbvayRIPNjpQmYCwgAsqpnsyKh9Mh@dpg-cgjj66pmbg59uqh99sfg-a/lab_10_db")
     
