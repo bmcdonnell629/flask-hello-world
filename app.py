@@ -72,7 +72,14 @@ def select():
     records = cur.fetchall()
     
     conn.close()
-    htmlRecord = tabulate(records, tablefmt='html')
+    htmlRecord = ""
+    htmlRecord += "<table>"
+    for player in records:
+        htmlRecord += "<tr>"
+        for info in player:
+            htmlRecord += "<td>{}</td>".format(info)
+        htmlRecord += "<tr>"
+    htmlRecord += "</table>"
     return htmlRecord
     
 
