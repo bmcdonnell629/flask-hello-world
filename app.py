@@ -94,7 +94,7 @@ def select():
         htmlRecord += "</table>"
     #if unable to select html = unsuccesful
     except:
-        htmlRecord = "No data to select"
+        htmlRecord = "No table to select from"
     #close connection
     conn.close()
     
