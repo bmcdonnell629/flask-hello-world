@@ -91,5 +91,5 @@ def drop():
         DROP TABLE IF EXISTS Basketball;
     ''')
     
-    return "Dropped Basketball Table"
+    return "Basketball Table Succesfully Dropped"
     
