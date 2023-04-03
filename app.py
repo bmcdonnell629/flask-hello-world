@@ -78,6 +78,7 @@ def select():
             htmlRecord += "<td>{}</td>".format(info)
         htmlRecord += "<tr>"
     htmlRecord += "</table>"
+    conn.close()
     return htmlRecord
     
 
@@ -90,6 +91,9 @@ def drop():
     cur.execute('''
         DROP TABLE IF EXISTS Basketball;
     ''')
+    
+    conn.commit()
+    conn.close()
     
     return "Basketball Table Succesfully Dropped"
     
